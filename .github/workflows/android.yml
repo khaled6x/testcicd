@@ -21,4 +21,3 @@ jobs:
       run: |
         cd grocery
         ls
-        #./gradlew build
