@@ -31,11 +31,10 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
-        TIMESTAMP: ${{ steps.current-time.outputs.time }}
 
       with:
-        tag_name: $TIMESTAMP
-        release_name: Release $TIMESTAMP
+        tag_name: ${{ steps.current-time.outputs.time }}
+        release_name: Release ${{ steps.current-time.outputs.time }}
         draft: false
         prerelease: false
     
