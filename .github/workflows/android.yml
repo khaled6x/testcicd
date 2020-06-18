@@ -34,8 +34,8 @@ jobs:
         TIMESTAMP: ${{ steps.current-time.outputs.time }}
 
       with:
-        tag_name: ${TIMESTAMP}
-        release_name: Release ${TIMESTAMP}
+        tag_name: $TIMESTAMP
+        release_name: Release $TIMESTAMP
         draft: false
         prerelease: false
     
