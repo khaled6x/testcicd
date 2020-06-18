@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '_ci_')"
+    if: "contains(github.event.head_commit.message, '_ci_cd_')"
 
     steps:
     - uses: actions/checkout@v2
@@ -31,6 +31,8 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
+        TIMESTAMP: ${{ date "+%Y-%m-%d-%H:%M" }}
+
       with:
         tag_name: 10.0.1
         release_name: Release 10.0.1
