@@ -23,8 +23,8 @@ jobs:
         cd grocery
         ls
         chmod +x gradlew
-        #./gradlew build
-        #./gradlew assembleDebug
+        ./gradlew build
+        ./gradlew assembleDebug
         
     - name: Create Release
       id: create_release
@@ -38,15 +38,15 @@ jobs:
         prerelease: false
     
     - name: Upload Release Asset
-      run: |
+      #run: |
           #cd grocery
-          ls
-      #id: upload-release-asset 
-      #uses: actions/upload-release-asset@v1
-      #env:
-        #GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
-      #with:
-        #upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        #asset_path: ./app/build/outputs/apk/debug/app-debug.apk
-        #asset_name: app-debug.apk
-        #asset_content_type: application/zip
+          #ls
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./grocery/app/build/outputs/apk/debug/app-debug.apk
+        asset_name: app-debug.apk
+        asset_content_type: application/zip
