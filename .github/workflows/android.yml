@@ -31,7 +31,7 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
-        TIMESTAMP: ${{ date "+%Y-%m-%d-%H:%M" }}
+        TIMESTAMP: ${{ steps.current-time.outputs.time }}
 
       with:
         tag_name: ${TIMESTAMP}
@@ -40,7 +40,7 @@ jobs:
         prerelease: false
     
     - name: Upload Release Asset
-      id: upload-release-asset 
+      id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.CMD_TOKEN }}
