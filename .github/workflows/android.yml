@@ -34,15 +34,12 @@ jobs:
         TIMESTAMP: ${{ date "+%Y-%m-%d-%H:%M" }}
 
       with:
-        tag_name: 10.0.1
-        release_name: Release 10.0.1
+        tag_name: ${TIMESTAMP}
+        release_name: Release ${TIMESTAMP}
         draft: false
         prerelease: false
     
     - name: Upload Release Asset
-      #run: |
-          #cd grocery
-          #ls
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
       env:
